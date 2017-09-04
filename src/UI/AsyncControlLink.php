@@ -4,17 +4,16 @@ namespace Pd\AsyncControl\UI;
 
 final class AsyncControlLink
 {
-
-	private static $defaultMessage = 'Load content';
-	private static $defaultAttributes = [];
-	/**
-	 * @var string
-	 */
-	private $message;
-	/**
-	 * @var array
-	 */
-	private $attributes;
+    private static $defaultMessage = 'Load content';
+    private static $defaultAttributes = [];
+    /**
+     * @var string
+     */
+    private $message;
+    /**
+     * @var array
+     */
+    private $attributes;
 
 
     /**
@@ -23,12 +22,13 @@ final class AsyncControlLink
      * @param array|NULL $attributes
      */
     public function __construct(
-		$message = NULL,
-		array $attributes = NULL
-	) {
-		$this->message = $message === NULL ? self::$defaultMessage : $message;
-		$this->attributes = $attributes === NULL ? self::$defaultAttributes : $attributes;
-	}
+        $message = NULL,
+        array $attributes = NULL
+    )
+    {
+        $this->message = $message === NULL ? self::$defaultMessage : $message;
+        $this->attributes = $attributes === NULL ? self::$defaultAttributes : $attributes;
+    }
 
 
     /**
@@ -36,26 +36,26 @@ final class AsyncControlLink
      * @param array $attributes
      */
     public static function setDefault($message, array $attributes = [])
-	{
-		self::$defaultMessage = $message;
-		self::$defaultAttributes = $attributes;
-	}
+    {
+        self::$defaultMessage = $message;
+        self::$defaultAttributes = $attributes;
+    }
 
 
     /**
      * @return string|NULL
      */
     public function getMessage()
-	{
-		return $this->message;
-	}
+    {
+        return $this->message;
+    }
 
 
     /**
      * @return array
      */
     public function getAttributes()
-	{
-		return $this->attributes;
-	}
+    {
+        return $this->attributes;
+    }
 }
