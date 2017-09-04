@@ -1,4 +1,4 @@
-<?php declare(strict_types = 1);
+<?php
 
 namespace Pd\AsyncControl\UI;
 
@@ -18,6 +18,8 @@ trait AsyncControlTrait
 	 */
 	protected $asyncRenderer;
 
+	/** @var bool */
+	protected $useTranslate = true;
 
 	public function handleAsyncLoad()
 	{
@@ -41,7 +43,11 @@ trait AsyncControlTrait
 	}
 
 
-	public function renderAsync(string $linkMessage = NULL, array $linkAttributes = NULL)
+    /**
+     * @param string|NULL $linkMessage
+     * @param array|NULL $linkAttributes
+     */
+    public function renderAsync($linkMessage = NULL, array $linkAttributes = NULL)
 	{
 		if (
 			$this instanceof Control
@@ -52,6 +58,7 @@ trait AsyncControlTrait
 			if ($template instanceof Template) {
 				$template->add('link', new AsyncControlLink($linkMessage, $linkAttributes));
 			}
+			$template->useTranslate = $this->useTranslate;
 			$template->setFile(__DIR__ . '/templates/asyncLoadLink.latte');
 			$template->render();
 		} elseif (is_callable($this->asyncRenderer)) {
@@ -62,7 +69,10 @@ trait AsyncControlTrait
 	}
 
 
-	public function setAsyncRenderer(callable $renderer)
+    /**
+     * @param callable $renderer
+     */
+    public function setAsyncRenderer(callable $renderer)
 	{
 		$this->asyncRenderer = $renderer;
 	}

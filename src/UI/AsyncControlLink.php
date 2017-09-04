@@ -1,4 +1,4 @@
-<?php declare(strict_types = 1);
+<?php
 
 namespace Pd\AsyncControl\UI;
 
@@ -17,8 +17,13 @@ final class AsyncControlLink
 	private $attributes;
 
 
-	public function __construct(
-		string $message = NULL,
+    /**
+     * AsyncControlLink constructor.
+     * @param string|NULL $message
+     * @param array|NULL $attributes
+     */
+    public function __construct(
+		$message = NULL,
 		array $attributes = NULL
 	) {
 		$this->message = $message === NULL ? self::$defaultMessage : $message;
@@ -26,20 +31,30 @@ final class AsyncControlLink
 	}
 
 
-	public static function setDefault(string $message, array $attributes = [])
+    /**
+     * @param $message
+     * @param array $attributes
+     */
+    public static function setDefault($message, array $attributes = [])
 	{
 		self::$defaultMessage = $message;
 		self::$defaultAttributes = $attributes;
 	}
 
 
-	public function getMessage(): string
+    /**
+     * @return string|NULL
+     */
+    public function getMessage()
 	{
 		return $this->message;
 	}
 
 
-	public function getAttributes(): array
+    /**
+     * @return array
+     */
+    public function getAttributes()
 	{
 		return $this->attributes;
 	}

@@ -1,5 +1,9 @@
 <div n:snippet="async">
 	<a n:href="asyncLoad!" n:attr="(expand) $link->getAttributes()" data-async rel="nofollow">
-		{$link->getMessage()|translate}
+		{if $useTranslate}
+			{$link->getMessage()|translate}
+		{else}
+			{$link->getMessage()}
+		{/if}
 	</a>
 </div>
